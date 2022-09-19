@@ -10,3 +10,5 @@ BOT CHECKER:
 
 A social bot is an automatic program that simulates human behavior on social network, taking part in discussions or spreading unverified information around social media. Malicious bots usually follow the same patterns, that’s why we have used “Botometer”, a supervised machine learning tool for bot detection on twitter which we have accessed using an API. 
 
+FRONT END:
+We utilized the React.js framework for the frontend component. TO BE CONTINUED
