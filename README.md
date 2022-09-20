@@ -11,4 +11,7 @@ BOT CHECKER:
 A social bot is an automatic program that simulates human behavior on social network, taking part in discussions or spreading unverified information around social media. Malicious bots usually follow the same patterns, that’s why we have used “Botometer”, a supervised machine learning tool for bot detection on twitter which we have accessed using an API. 
 
 FRONT END:
-We utilized the React.js framework for the frontend component. TO BE CONTINUED
+
+We utilized the React.js framework for the frontend component as a web app. We started with the create-react-app framework and added the features that were needed for our project. The page starts with a Google login authentication, followed by an input box for the user to enter a Twitter handle they would like to track for bot score, main content topics, and overall sentiment. After the API calls are made, the three pieces of account information are presented to the user below the input box. 
+
+To run the react web app, click here: https://ec463-twitter-miniproject.web.app/
