@@ -1,6 +1,4 @@
-import e from 'cors';
 import React from 'react';
-var request = require('request');
 
 class DataFetch extends React.Component {
     constructor(props) {
@@ -23,12 +21,10 @@ class DataFetch extends React.Component {
     }
 
     async componentDidMount(inputAccount) {
-        let accountToCheck = inputAccount;
-        console.log(accountToCheck)
-        let accountToCheckStr = String(accountToCheck)
+        let accountToCheckStr = String(inputAccount)
 
+        // 1st API call
         let req = JSON.stringify({ username: accountToCheckStr });
-
         const requestOptions = {
             method: 'POST',
             headers: {
@@ -36,22 +32,35 @@ class DataFetch extends React.Component {
             },
             body: req,
         };
-        const response = await fetch("https://vab-api2.herokuapp.com/tweety", requestOptions);
+        const response = await fetch("https://vab-api3.herokuapp.com/twitter", requestOptions);
         const data = await response.json();
         console.log(data);
-        this.setState({ botScore: data.BotScore });
-        this.setState({ majorTopics: data.Major_Categories });
-        this.setState({ sentimentScore: data.Sentiment });
+
+        // 2nd API call
+        let req2 = JSON.stringify({ Twitter_Text: data.Twitter_Text, username: accountToCheckStr });
+        const requestOptions2 = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: req2,
+        };
+        const response2 = await fetch("https://vab-googleapi.herokuapp.com/twitter", requestOptions2)
+        const data2 = await response2.json();
+        console.log(data2);
+
+        this.setState({ botScore: data2.BotScore });
+        this.setState({ majorTopics: data2.Major_Categories });
+        this.setState({ sentimentScore: data2.Sentiment });
     }
 
     render() {
         const { account, botScore, majorTopics, sentimentScore } = this.state;
         return (
             <div className="card text-center m-3">
-                <h3 className="card-header">Twitter Account Information</h3>
                 <div>
                     <form onSubmit={this.handleSubmit}>
-                    <label>Enter the Twitter account username, starting with @ (for example: @elonmusk):    
+                    <label>Enter the Twitter handle below, starting with @ (for example: @elonmusk):    
                         <br /> <br /><div>
                         <input 
                             type="text" 
@@ -63,7 +72,7 @@ class DataFetch extends React.Component {
                     <input type="submit" />
                     </form>
                 </div>
-                <br /><br />
+                <h5>Results will take at least several seconds to update below.</h5>
                 <div className="card-body">
                     Bot Score: {botScore}
                     <br /> <br />
