@@ -6,7 +6,7 @@ import { gapi } from 'gapi-script';
 
 function GoogleAuth() {
     const [ profile, setProfile ] = useState(false);
-    const clientId = '386932037035-k8v833noqjk7m4auae0t83vnkrqvvg3t.apps.googleusercontent.com';
+    const clientId = '327176835226-404pkvtl61sd7kvarrl3sh31v96e9qtf.apps.googleusercontent.com';
     useEffect(() => {
         const initClient = () => {
             gapi.client.init({
@@ -33,12 +33,6 @@ function GoogleAuth() {
         <div>
             {profile ? (
                 <div>
-                    {/* <img src={profile.imageUrl} alt="user image" />
-                    <h3>User Logged in</h3>
-                    <p>Name: {profile.name}</p>
-                    <p>Email Address: {profile.email}</p>
-                    <br />
-                    <br /> */}
                     <h3>Logged in as {profile.name} ({profile.email})</h3>
                     <GoogleLogout clientId={clientId} buttonText="Log out" onLogoutSuccess={logOut} />
                 </div>

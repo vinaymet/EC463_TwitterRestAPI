@@ -12,6 +12,9 @@ function App() {
         </h1>
         <GoogleAuth/>
         <DataFetch/>
+        <h3>
+          Made by Vinay Metlapalli, Beatriz Sicilia, and Alex Zhou
+        </h3>
       </header>
     </div>
   );
