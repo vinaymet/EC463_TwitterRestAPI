@@ -14,6 +14,24 @@ A social bot is an automatic program that simulates human behavior on social net
 
 FRONT END:
 
-We utilized the React.js framework for the frontend component as a webpage application. We started with the create-react-app framework and added the features that were needed for our project. The page starts with a Google login authentication, followed by an input box for the user to enter a Twitter handle they would like to track for bot score, main content topics, and overall sentiment. After the API calls are made, the three pieces of account information are retrieved and presented to the user below the input box. 
+We utilized the React.js framework for the frontend component as a webpage application. We started with the create-react-app framework and added the features that were needed for our project. The page starts with a Google login authentication, followed by an input box for the user to enter a Twitter handle they would like to track for bot score, main content topics, and overall sentiment. After the API calls are made, these three pieces of account information are retrieved and presented to the user below the input box. 
 
 Google Firebase was chosen to host our React web app. After building the React app and setting up the Firebase environment, you can access the webpage by clicking here: https://ec463-twitter-miniproject.web.app/
+
+Should you decide to add or modify the web page, make sure to download all the relevant node packages in the frontend directory:
+
+- npm install [package]
+
+Run the project locally on localhost 3000:
+
+- npm run start
+
+Build your changes:
+
+- npm run build
+
+Deploy/host the web page; since we used Firebase, deploy as:
+
+- firebase deploy
+
+
