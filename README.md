@@ -16,6 +16,14 @@ FRONT END:
 
 We utilized the React.js framework for the frontend component as a webpage application. We started with the create-react-app framework and added the features that were needed for our project. The page starts with a Google login authentication, followed by an input box for the user to enter a Twitter handle they would like to track for bot score, main content topics, and overall sentiment. After the API calls are made, these three pieces of account information are retrieved and presented to the user below the input box. 
 
+The main components of the web app can be found under the src folder:
+
+- App.js: main controller of web app, which incorporates two React components listed below.
+
+- googleAuth.js: component that controls the Google login/logout feature. Source of code: https://blog.logrocket.com/guide-adding-google-login-react-app/
+
+- dataFetch.js: component that calls the APIs and displays the three pieces of account data. Source of navigating CORS error with API calls: https://stackoverflow.com/questions/43871637/no-access-control-allow-origin-header-is-present-on-the-requested-resource-whe/43881141#43881141
+
 Google Firebase was chosen to host our React web app. After building the React app and setting up the Firebase environment, you can access the webpage by clicking here: https://ec463-twitter-miniproject.web.app/
 
 Should you decide to add or modify the web page, make sure to download all the relevant node packages in the frontend directory:
