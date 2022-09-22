@@ -34,4 +34,48 @@ Deploy/host the web page; since we used Firebase, deploy as:
 
 - firebase deploy
 
+---BACKEND:----
+
+The backend contains a Python script used to create a Flask API hosted on Heroku. Our API calls and retrieves data from the three external APIs. It is called via POST request and can be accessed through our REACT JS webpage. Below is a detailed overview of the external API’s we used, the structure of our API, and how our API interacts with Heroku (the hosting service we selected).
+
+External API’s:
+
+Twitter API (Tweepy)
+  verify_credentials
+     This is the first function from the Twitter API that is called. The purpose is to first verify that the input twitter handle from the user is valid.        If so, the program continues, otherwise, the API returns an “invalid user” message to the user.
+  user_timeline 
+    This is the secon function from the Twitter API that is called. The purpose is to pull 200 tweets (not including retweets) from the account the user       entered. The tweets are stored in a list for further analysis
+
+Google Natural Language Processing (NLP) API:
+    analyze_sentiment 
+      This is the first function from the Google NLP API that is called. This function returns a sentiment score from -1 to 1 for the 200 tweets collected       from the twitter API
+    classify_text
+      This is the second function from the Google NLP API that is called. This function returns the major categories discussed in the 200 tweets collected       from the Twitter API.
+
+Botometer API
+    check_account
+      This is the only function from the Botometer API that is called. This function returns a score from 0-5 on how likely the account the user inputted         is a bot. Where 0 is more unlikely and 5 is more likely.
+
+Internal (Our) Flask API Structure:
+    External API Calls:
+      The first part of the backend infrastructure is the API calls to the services outlined above
+          Output Packaging with JSON via Post Request:
+             Our API outputs the sentiment, categories, and Botometer score in a JSON format.
+             There are several error checks throughout the script to ensure that the output from our API is accurate. For example, the API first checks                  that the user inputted a valid twitter account to avoid making several unnecessary external API calls
+         Our API is called via a POST request
+
+API Hosting via Heroku:
+  Pushing our API to Heroku:
+    Our Flask API is pushed to Heroku via Git Command-Line
+  Hosting our API on Heroku:
+    Our API is hosted at: https://vab-apitest.herokuapp.com/twitter
+
+Calling our API:
+  Our API can be accessed in 3 ways:
+     API Testing Apps (Ex. Postman) via POST request
+     REACT JS Web app: https://ec463-twitter-miniproject.web.app/
+     Directly from a script (Ex: Through the Requests library in Python)
+
+
+
 
